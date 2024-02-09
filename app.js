@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
   
 });
 
+
+
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let interval = null;
 
@@ -84,3 +86,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 30);
   };
 });
+
