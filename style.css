@@ -1,7 +1,7 @@
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: rgb(0, 0, 0);
 }
 
@@ -35,13 +35,12 @@ body {
 }
 
 #holder {
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
 
 }
 
 #name {
-  display: flex ;
+  display: flex;
   justify-content: center;
   margin-top: 20%;
   font-size: clamp(3rem, 10vw, 10rem);
@@ -73,4 +72,94 @@ a {
   /* background-color: black; */
   z-index: 1;
   /* Place it behind the loading screen initially */
+}
+
+
+
+
+/* menu on the rigth css */
+
+
+
+#upper-nav {
+  display: none;
+}
+
+.navigation {
+  position: fixed;
+  top: 50%;
+  margin-top: -315px;
+  text-align: center;
+  z-index: 2;
+  right: 0;
+
+
+}
+
+
+
+.navigation li {
+
+  color: #565656;
+  text-align: right;
+  font-size: 2.5rem !important;
+  font-weight: 700;
+  font-family: Roboto;
+
+
+  /* display: block; */
+  padding: 0 10px;
+
+  line-height: 9.5vh;
+  /* text-align: center; */
+
+  cursor: pointer;
+
+}
+
+.navigation a {
+  text-decoration: none;
+}
+
+/*Hover*/
+.navigation li.light-menu {
+  /* border-bottom: 0.1em solid #252525; */
+
+}
+
+.navigation li.light-menu:hover {
+  border-bottom: 2px solid #ffffff;
+
+}
+
+
+
+
+/* Projects Section */
+#projects {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.project-item {
+  text-align: center;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.project-image {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.project-item:hover .project-image {
+  transform: scale(1.1);
+}
+
+.project-name {
+  margin-top: 10px;
 }
