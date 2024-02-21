@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Simulate loading with GSAP
   const loadingProgress = gsap.to("#loading-progress", {
-    duration: 1, // Adjust the duration as needed
+    duration: 0.1, // Adjust the duration as needed
     width: "100%",
     ease: "bounce.out",     
     onComplete: function () {
@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const nameElement = document.getElementById("name");
       const holderElement = document.getElementById("holder");
       const mainContent = document.getElementById("main-content");
+      const contentHolder = document.getElementById("content");
 
       let interval = null;
 
@@ -73,19 +74,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
                   // After 2 seconds, move the name to the top-left corner with GSAP
                   gsap.to(nameElement, {
-                      duration: 2,
+                    // change back to 2 seconds
+                      duration: 0.1,
                       fontSize: "clamp(2rem, 5vw, 5rem)",
                       padding: "0rem clamp(0.5rem, 1vw, 1rem)",
-                      margin: "2px",
+                      margin: "0px 15px 15px 40px",
                       display: "block",
                       top: 0,
+                      position: "fixed",
                       left: 0,
-                      position: "sticky",
                       ease: "power4.out",
                       onComplete: function () {
                           // Set display property to block once the animation is complete
                           nameElement.style.display = "block";
-
+                          gsap.to("#content", { opacity: 1 });
                           // Reveal other content
                           gsap.to(mainContent, { opacity: 1 });
                           gsap.to(holderElement, { opacity: 1 });
@@ -144,4 +146,21 @@ document.addEventListener('scroll', function () {
       nav.style.display = 'block';
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const parallaxImages = document.querySelectorAll(".parallax-image");
+  const textLeftHeight = document.querySelector(".text-left").offsetHeight;
+
+  window.addEventListener("scroll", function () {
+      parallaxImages.forEach((image) => {
+          const distanceFromTop = image.offsetTop - window.innerHeight + textLeftHeight;
+          const scrollY = window.scrollY;
+          const parallaxValue = distanceFromTop - scrollY * 0.5;
+
+          image.style.transform = `translateY(${parallaxValue}px)`;
+      });
+  });
+});
+
+
 
