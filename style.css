@@ -80,9 +80,20 @@ a {
   z-index: 1;
   /* Place it behind the loading screen initially */
 }
+.start-container{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+#portfolio-image{
+  display: flex;
 
-
-
+  width: 20%;
+  margin-left: 40px;
+}
+.start-container .text-left{
+  width: auto;
+}
 
 /* menu on the rigth css */
 
@@ -105,7 +116,7 @@ a {
 
 
 
-.navigation li {
+.navigation li,.lang {
 
   color: #565656;
   text-align: right;
@@ -123,7 +134,12 @@ a {
   cursor: pointer;
 
 }
-
+.lang{
+  padding: 0;
+}
+.active{
+  color: #ffffff;
+}
 .navigation a {
   text-decoration: none;
 }
@@ -138,21 +154,24 @@ a {
   border-bottom: 2px solid #ffffff;
 
 }
+
 /* ........... */
-#content{
-opacity: 0;
+#content {
+  opacity: 0;
 
 }
-.text-left{
+
+.text-left {
   margin: 10px;
   line-height: 3.4rem;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   color: #D0D0D0;
   width: 50%;
-  font-weight: 400;
+  font-weight: 300;
   margin-left: 40px;
 }
-.highlighted-word{
+
+.highlighted-word {
   font-weight: 700;
   color: #ffffff;
 }
@@ -172,7 +191,8 @@ opacity: 0;
 
 .project {
   position: relative;
-  width: 45%; /* Adjust the width as needed */
+  width: 45%;
+  /* Adjust the width as needed */
   margin-bottom: 20px;
   overflow: hidden;
   cursor: pointer;
@@ -185,20 +205,31 @@ opacity: 0;
 }
 
 .caption {
+  display: flex;
+  justify-content: center;
   position: absolute;
   color: #000000;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background-color: #d0d0d0; /* White background with some transparency */
+  background-color: #000000e9;
+  /* White background with some transparency */
   padding: 20px;
   transition: left 0.3s ease-in-out;
+}
+.caption div{
+  color: #ffffff;
+  display: flex;
+  text-align: center;
+  font-size: 1.5rem;
+  width: 50%;
 }
 
 .project:nth-child(even) {
   align-self: center;
 }
+
 .project:nth-child(odd) {
   align-self: center;
 }
@@ -223,7 +254,7 @@ opacity: 0;
 }
 
 .shape {
-  background-color: #d0d0d0;
+  background-color: #000000;
   border-right: 2px solid #565656;
 
   position: relative;
@@ -275,6 +306,7 @@ opacity: 0;
   transition: opacity 0.3s ease-in-out;
   opacity: 1;
 }
+
 .shape:hover .text {
 
   display: block;
@@ -286,7 +318,7 @@ opacity: 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #000000;
+  color: #d0d0d0;
   font-size: 3.5vh;
   font-weight: bold;
 
@@ -321,7 +353,9 @@ opacity: 0;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
-.text{
+
+.text {
+  font-size: 2rem;
   color: #000000;
   text-align: center;
   width: 50%;
@@ -333,6 +367,19 @@ opacity: 0;
   display: none;
 
 }
+.text ul{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  list-style-type: circle;
+  
+}
+.text ul li{
+  height: 100%;
+  color: #D0D0D0;
+  margin-top: 4rem;
+}
+
 /* Display images on hover */
 .shape:hover .image {
   opacity: 1;
@@ -356,14 +403,14 @@ opacity: 0;
 
 .image-1 {
 
-background-color: #565656;
+  background-color: #565656;
   /* background-image: url('images/Ditur.png'); */
 
 }
 
 .image-2 {
   /* background-image: url('images/Kraglund\ Frontpage.png'); */
-background-color: #565656;
+  background-color: #565656;
 }
 
 .image-3 {
@@ -393,3 +440,59 @@ background-color: #565656;
   background-image: url('images/IMG_2097.avif');
 }
 
+/* Footer */
+
+.footer-holder {
+  height: 100vh;
+  width: 100%;
+  background-attachment: fixed;
+  background-size: 50rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(images/Portfolio\ image\ colored.jpg);
+}
+
+.social-links {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.social-links a {
+  margin: 2rem;
+  font-size: 2.5rem;
+  margin-right: 10px;
+  width: 100%;
+}
+
+.heading {
+  color: #ffffff;
+  font-size: 3.5rem;
+  margin-left: 40px;
+  font-weight: 700;
+}
+
+.contact-info {
+  flex-direction: column;
+  display: flex;
+  margin: 40px;
+  font-size: 2.5rem;
+
+}
+.contact-info i{
+  margin-right: 30px;
+}
+.contact-info a{
+  color: #D0D0D0;
+  margin-top: 10vh;
+  margin-bottom: 40px;
+}
+.footer-content{
+
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+}
