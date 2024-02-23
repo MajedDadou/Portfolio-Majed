@@ -199,8 +199,9 @@ a {
 }
 
 .project img {
-  width: 100%;
-  height: auto;
+  background-color: #ffffff;
+  width: 50%;
+  /* height: auto; */
   display: block;
 }
 
@@ -237,6 +238,7 @@ a {
 .project:hover .caption {
   left: 0;
 }
+
 
 
 
