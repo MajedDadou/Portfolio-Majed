@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Simulate loading with GSAP
   const loadingProgress = gsap.to("#loading-progress", {
-    duration: 0.1, // Adjust the duration as needed
+    duration: 4, // Adjust the duration as needed
     width: "100%",
-    ease: "bounce.out",     
+    ease: "bounce.out",
     onComplete: function () {
       // Expand loading progress bar to 100% height
       gsap.to("#loading-progress", {
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  
+
 });
 
 
@@ -43,61 +43,61 @@ document.addEventListener("DOMContentLoaded", function () {
   // Your additional code...
 
   function initNameAnimation() {
-      const nameElement = document.getElementById("name");
-      const holderElement = document.getElementById("holder");
-      const mainContent = document.getElementById("main-content");
-      const contentHolder = document.getElementById("content");
+    const nameElement = document.getElementById("name");
+    const holderElement = document.getElementById("holder");
+    const mainContent = document.getElementById("main-content");
+    const contentHolder = document.getElementById("content");
 
-      let interval = null;
+    let interval = null;
 
-      nameElement.onmouseover = event => {
-          let iteration = 0;
+    nameElement.onmouseover = event => {
+      let iteration = 0;
 
+      clearInterval(interval);
+
+      const originalText = event.target.dataset.value.replace('-', ' ');
+
+      interval = setInterval(() => {
+        event.target.innerText = originalText
+          .split("")
+          .map((letter, index) => {
+            if (index < iteration) {
+              return originalText[index];
+            }
+
+            return letters[Math.floor(Math.random() * 26)];
+          })
+          .join("");
+
+        if (iteration >= originalText.length) {
           clearInterval(interval);
 
-          const originalText = event.target.dataset.value.replace('-', ' ');
+          // After 2 seconds, move the name to the top-left corner with GSAP
+          gsap.to(nameElement, {
+            // change back to 2 seconds
+            duration: 1,
+            fontSize: "clamp(2rem, 5vw, 5rem)",
+            padding: "0rem clamp(0.5rem, 1vw, 1rem)",
+            margin: "0px 15px 15px 40px",
+            display: "block",
+            top: 0,
+            position: "fixed",
+            left: 0,
+            ease: "power4.out",
+            onComplete: function () {
+              // Set display property to block once the animation is complete
+              nameElement.style.display = "block";
+              gsap.to("#content", { opacity: 1 });
+              // Reveal other content
+              gsap.to(mainContent, { opacity: 1 });
+              gsap.to(holderElement, { opacity: 1 });
+            },
+          });
+        }
 
-          interval = setInterval(() => {
-              event.target.innerText = originalText
-                  .split("")
-                  .map((letter, index) => {
-                      if (index < iteration) {
-                          return originalText[index];
-                      }
-
-                      return letters[Math.floor(Math.random() * 26)];
-                  })
-                  .join("");
-
-              if (iteration >= originalText.length) {
-                  clearInterval(interval);
-
-                  // After 2 seconds, move the name to the top-left corner with GSAP
-                  gsap.to(nameElement, {
-                    // change back to 2 seconds
-                      duration: 0.1,
-                      fontSize: "clamp(2rem, 5vw, 5rem)",
-                      padding: "0rem clamp(0.5rem, 1vw, 1rem)",
-                      margin: "0px 15px 15px 40px",
-                      display: "block",
-                      top: 0,
-                      position: "fixed",
-                      left: 0,
-                      ease: "power4.out",
-                      onComplete: function () {
-                          // Set display property to block once the animation is complete
-                          nameElement.style.display = "block";
-                          gsap.to("#content", { opacity: 1 });
-                          // Reveal other content
-                          gsap.to(mainContent, { opacity: 1 });
-                          gsap.to(holderElement, { opacity: 1 });
-                      },
-                  });
-              }
-
-              iteration += 1 / 3;
-          }, 30);
-      };
+        iteration += 1 / 3;
+      }, 30);
+    };
   }
 });
 
@@ -112,53 +112,56 @@ document.addEventListener('scroll', function () {
   var visibleSection = null;
 
   for (var i = 1; i <= 5; i++) {
-      var sectionId = 'section' + i;
-      var section = document.getElementById(sectionId);
+    var sectionId = 'section' + i;
+    var section = document.getElementById(sectionId);
 
-      if (section) {
-          var rect = section.getBoundingClientRect();
+    if (section) {
+      var rect = section.getBoundingClientRect();
 
-          if (rect.top < window.innerHeight  && rect.bottom > window.innerHeight ) {
-              visibleSection = section;
+      if (rect.top < window.innerHeight && rect.bottom > window.innerHeight) {
+        visibleSection = section;
 
-              // Reset the color of all watch elements
-              for (var j = 1; j <= 5; j++) {
-                  var allplaceElements = document.querySelectorAll('#place' + j);
-                  allplaceElements.forEach(function (placeElement) {
-                      placeElement.style.color = ''; // Reset color to default
-                  });
-              }
+        // Reset the color of all watch elements
+        for (var j = 1; j <= 5; j++) {
+          var allplaceElements = document.querySelectorAll('#place' + j);
+          allplaceElements.forEach(function (placeElement) {
+            placeElement.style.color = ''; // Reset color to default
+          });
+        }
 
-              // Set the color of current section's watch elements
-              var placeElements = document.querySelectorAll('#place' + i);
-              placeElements.forEach(function (placeElement) {
-                  placeElement.style.color = 'white';
-              });
+        // Set the color of current section's watch elements
+        var placeElements = document.querySelectorAll('#place' + i);
+        placeElements.forEach(function (placeElement) {
+          placeElement.style.color = 'white';
+        });
 
-              break; // Exit the loop if a visible section is found
-          }
+        break; // Exit the loop if a visible section is found
       }
+    }
   }
 
   if (visibleSection) {
-      nav.style.display = 'block';
+    nav.style.display = 'block';
   } else {
-      nav.style.display = 'block';
+    nav.style.display = 'block';
   }
 });
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const parallaxImages = document.querySelectorAll(".parallax-image");
   const textLeftHeight = document.querySelector(".text-left").offsetHeight;
 
   window.addEventListener("scroll", function () {
-      parallaxImages.forEach((image) => {
-          const distanceFromTop = image.offsetTop - window.innerHeight + textLeftHeight;
-          const scrollY = window.scrollY;
-          const parallaxValue = distanceFromTop - scrollY * 0.5;
+    parallaxImages.forEach((image) => {
+      const distanceFromTop = image.offsetTop - window.innerHeight + textLeftHeight;
+      const scrollY = window.scrollY;
+      const parallaxValue = distanceFromTop - scrollY * 0.5;
 
-          image.style.transform = `translateY(${parallaxValue}px)`;
-      });
+      image.style.transform = `translateY(${parallaxValue}px)`;
+    });
   });
 });
 
