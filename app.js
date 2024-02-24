@@ -147,23 +147,3 @@ document.addEventListener('scroll', function () {
   }
 });
 
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  const parallaxImages = document.querySelectorAll(".parallax-image");
-  const textLeftHeight = document.querySelector(".text-left").offsetHeight;
-
-  window.addEventListener("scroll", function () {
-    parallaxImages.forEach((image) => {
-      const distanceFromTop = image.offsetTop - window.innerHeight + textLeftHeight;
-      const scrollY = window.scrollY;
-      const parallaxValue = distanceFromTop - scrollY * 0.5;
-
-      image.style.transform = `translateY(${parallaxValue}px)`;
-    });
-  });
-});
-
-
-
