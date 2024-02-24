@@ -164,7 +164,9 @@ a {
 
 
 }
-
+.resp-menu{
+  display: none;
+}
 .responsiv {
   display: none;
 }
@@ -815,5 +817,9 @@ a {
 
 
 
+  }
+
+  .resp-menu{
+    display: contents;
   }
 }
